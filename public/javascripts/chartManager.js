@@ -21,6 +21,7 @@
             var $name = $('#new_chart_name');
             if (!$name.val() || $name.val().trim() === '') {alert('Chart name is required'); return;}
             $.post('/chart/new', {name: $name.val()}, function(response) {
+                $name.val('');
                 var chart = $.parseJSON(response);
                 $('#chart_table').append(cm.tr(chart));
             });
