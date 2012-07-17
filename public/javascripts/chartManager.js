@@ -13,7 +13,6 @@
         $('#chart_table').on('click', '.delete_chart', function(e) {
             var sure = confirm('Are you sure?');
             if (!sure) e.preventDefault();
-            window.location.href = $(this).attr('href');
         });
         
         $('#add_chart').on('submit', function(e) {
