@@ -61,7 +61,7 @@ app.post('/chart/new', authenticate, function(req, res, next) {
     charts = (results[0] && results[0].charts && results[0].charts.length) ? results[0].charts : [];
     charts.push(chart);
     results[0].charts = charts;
-    collection.save(results[0], function(err, docs) {
+    dbm.collection.save(results[0], function(err, docs) {
       res.end(JSON.stringify(_.last(docs[0].charts)));
     });
   });
