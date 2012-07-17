@@ -44,7 +44,12 @@ function authenticate(req, res, next) {
 
 app.get('/', routes.index);
 
-app.get('/charts', authenticate, routes.charts);
+app.get('/charts', authenticate, function(req, res, next) {
+  dbm.collection.find({email: req.session.user}).toArray(function(err, results) {
+    req.charts = (results[0] && results[0].charts && results[0].charts.length) ? results[0].charts : [{name: 'No charts yet, add one now.'}];
+    routes.charts(req, res);
+  });
+});
 
 app.post('/users/login', function(req, res, next) {
   dbm.collection.find({email: req.body.u}).toArray(function(err, results) {

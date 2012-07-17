@@ -8,5 +8,5 @@ exports.index = function(req, res){
 };
 
 exports.charts = function(req, res){
-  res.render('charts', { title: 'Your Charts'});
+  res.render('charts', { title: 'Your Charts', charts: req.charts});
 }
