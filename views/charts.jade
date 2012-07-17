@@ -8,6 +8,8 @@ block append body
                 ul.nav.nav-pills
         div.row
             table(class='table table-bordered table-striped')
-                each chart in charts
-                    tr= chart.name
+                tbody
+                    each chart in charts
+                        tr
+                            td= chart.name
                 
