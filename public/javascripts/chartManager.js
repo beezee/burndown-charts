@@ -6,7 +6,7 @@
         return '<tr><td>'+chart.name+'</td>\
                     <td><a href="/chart/edit/'+chart.id+'">Edit</a></td>\
                     <td><a href="/chart/view/'+chart.id+'">View</a></td>\
-                    <td><a href="/chart/delete/'+chart.id+'">Delete</a></td>';
+                    <td><a class="delete_chart" href="/chart/delete/'+chart.id+'">Delete</a></td>';
     }
     
     $('document').ready(function() {
