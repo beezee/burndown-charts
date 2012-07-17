@@ -11,4 +11,10 @@ block append body
                     each chart in charts
                         tr
                             td= chart.name
+            hr
+            form(id='add_chart', class='well form-search')
+                div.create_chart_field
+                        label(for="new_chart_name") Name:
+                        input#new_chart_name(type="text")
+                        input#new_chart_submit(type="submit", value="Create")
                 
