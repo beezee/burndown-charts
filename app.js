@@ -52,6 +52,15 @@ app.get('/charts', authenticate, function(req, res, next) {
   });
 });
 
+app.get('/chart/delete/:id', authenticate, function(req, res, next) {
+  dbm.collection.find({email: req.session.user}).toArray(function(err, results) {
+    results[0].charts = _.reject(results[0].charts, function(i) { return i.id == req.params.id; });
+    dbm.collection.save(results[0], function(err, docs) {
+      res.redirect('/charts');
+    });
+  });
+});
+
 app.post('/chart/new', authenticate, function(req, res, next) {
   dbm.collection.find({email: req.session.user}).toArray(function(err, results) {
     var chart = {};
