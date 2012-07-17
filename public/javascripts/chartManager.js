@@ -4,9 +4,9 @@
     cm.tr = function(chart) {
         if (!chart.id || !chart.name) return '';
         return '<tr><td>'+chart.name+'</td>\
-                    <td><a href="/chart/edit/"'+chart.id+'">Edit</a></td>\
-                    <td><a href="/chart/view/"'+chart.id+'">View</a></td>\
-                    <td><a href="/chart/delete/"'+chart.id+'">Delete</a></td>';
+                    <td><a href="/chart/edit/'+chart.id+'">Edit</a></td>\
+                    <td><a href="/chart/view/'+chart.id+'">View</a></td>\
+                    <td><a href="/chart/delete/'+chart.id+'">Delete</a></td>';
     }
     
     $('document').ready(function() {
@@ -22,7 +22,6 @@
             $.post('/chart/new', {name: $name.val()}, function(response) {
                 $name.val('');
                 var chart = $.parseJSON(response);
-                console.log(chart);
                 $('#chart_table').append(cm.tr(chart));
             });
         });
