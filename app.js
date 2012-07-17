@@ -57,6 +57,12 @@ app.post('/users/login', function(req, res, next) {
   });
 });
 
+app.get('/users/logout', function(req, res, next) {
+  delete req.session.loggedIn;
+  delete req.session.user;
+  res.redirect('/');
+});
+
 app.post('/users/new', function(req, res, next) {
   dbm.collection.find({email: req.body.u}).toArray(function(err, results) {
     if (!err && results.length > 0) res.end(JSON.stringify({status: 'Sorry, looks like that email address is already registered.'}));
