@@ -1,0 +1,14 @@
+!!!
+html
+  head
+    block head
+      script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", type="text/javascript")
+      title= title
+      link(rel='stylesheet', href='/stylesheets/style.css')
+      link(rel='stylesheet', href='/stylesheets/btsp-min.css')
+      link(rel='stylesheet', href='/stylesheets/docs.css')
+  body
+    block body
+      div.navbar.navbar-fixed-top
+        div.navbar-inner
+            a.brand(href='./') Burndown Charts
