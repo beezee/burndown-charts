@@ -44,9 +44,7 @@ function authenticate(req, res, next) {
 
 app.get('/', routes.index);
 
-app.get('/charts', authenticate, function(req, res, next) {
-  res.end('woot');
-});
+app.get('/charts', authenticate, routes.charts);
 
 app.post('/users/login', function(req, res, next) {
   dbm.collection.find({email: req.body.u}).toArray(function(err, results) {
