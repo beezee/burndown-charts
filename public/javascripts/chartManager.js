@@ -22,6 +22,7 @@
             $.post('/chart/new', {name: $name.val()}, function(response) {
                 $name.val('');
                 var chart = $.parseJSON(response);
+                console.log(chart);
                 $('#chart_table').append(cm.tr(chart));
             });
         });
