@@ -7,7 +7,7 @@
                     <td><a href="/chart/edit/'+chart.id+'">Edit</a></td>\
                     <td><a href="/chart/view/'+chart.id+'">View</a></td>\
                     <td><a class="delete_chart" href="/chart/delete/'+chart.id+'">Delete</a></td>\
-                    <td><label for="public_'+chart.id+'">Public?</label><input type="checkbox" id="public_'+chart.id+'" /></td>';
+                    <td><label for="public_'+chart.id+'" class="pull-left">Public?</label><input type="checkbox"class="public_toggle" id="public_'+chart.id+'" /></td>';
     }
     
     $('document').ready(function() {
