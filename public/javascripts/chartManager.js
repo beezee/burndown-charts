@@ -2,11 +2,11 @@
     
     var cm = {};
     cm.tr = function(chart) {
-        if (!chart.cuid || !chart.name) return '';
+        if (!chart.id || !chart.name) return '';
         return '<tr><td>'+chart.name+'</td>\
-                    <td><a href="/chart/edit/"'+chart.cuid+'">Edit</a></td>\
-                    <td><a href="/chart/view/"'+chart.cuid+'">View</a></td>\
-                    <td><a href="/chart/delete/"'+chart.cuid+'">Delete</a></td>';
+                    <td><a href="/chart/edit/"'+chart.id+'">Edit</a></td>\
+                    <td><a href="/chart/view/"'+chart.id+'">View</a></td>\
+                    <td><a href="/chart/delete/"'+chart.id+'">Delete</a></td>';
     }
     
     $('document').ready(function() {

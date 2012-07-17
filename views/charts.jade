@@ -16,11 +16,11 @@ block append body
                             td= chart.name
                             if chart.id
                                 td
-                                    a(href='/chart/edit/'+chart.cuid) Edit
+                                    a(href='/chart/edit/'+chart.id) Edit
                                 td
-                                    a(href='/chart/view/'+chart.cuid) View
+                                    a(href='/chart/view/'+chart.id) View
                                 td
-                                    a(href='/chart/delete'+chart.cuid, class='delete_chart') Delete
+                                    a(href='/chart/delete/'+chart.id, class='delete_chart') Delete
             hr
             form(id='add_chart', class='well form-search')
                 div.create_chart_field
