@@ -17,12 +17,12 @@
         });
         
         $('#add_chart').on('submit', function(e) {
-            var $this = $(this);
+            var $table = $('#chart_table');
             e.preventDefault();
             var $name = $('#new_chart_name');
             if (!$name.val() || $name.val().trim() === '') {alert('Chart name is required'); return;}
             $.post('/chart/new', {name: $name.val()}, function(response) {
-                if ($this.find('tr').length === 1) $this.find('tr').remove();
+                if ($table.find('tr').length === 1) $table.find('tr').remove();
                 $name.val('');
                 var chart = $.parseJSON(response);
                 $('#chart_table').append(cm.tr(chart));
