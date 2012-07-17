@@ -35,7 +35,7 @@ app.configure('production', function(){
 // Routes
 
 function authenticate(req, res, next) {
-  if (req.session.loggedIn !== "yes" && req.path !== "/" || req.path !== "/") {
+  if (req.session.loggedIn !== "yes" && req.path !== "/") {
     res.redirect("/");
     return;
   }
