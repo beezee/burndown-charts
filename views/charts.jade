@@ -1,16 +1,26 @@
 extends layout
 
+block append head
+    script(src='/javascripts/chartManager.js', type='text/javascript')
+
 block append body
     div.container
         header#overview.jumbotron.subhead
             h2 Your Charts
         hr
         div.row(class='span10')
-            table(class='table table-bordered table-striped')
+            table(class='table table-bordered table-striped', id='chart_table')
                 tbody
                     each chart in charts
                         tr
                             td= chart.name
+                            if chart.id
+                                td
+                                    a(href='/chart/edit/'+chart.cuid) Edit
+                                td
+                                    a(href='/chart/view/'+chart.cuid) View
+                                td
+                                    a(href='/chart/delete'+chart.cuid, class='delete_chart') Delete
             hr
             form(id='add_chart', class='well form-search')
                 div.create_chart_field
