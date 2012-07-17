@@ -64,7 +64,7 @@ app.get('/chart/delete/:id', authenticate, function(req, res, next) {
 app.post('/chart/new', authenticate, function(req, res, next) {
   dbm.collection.find({email: req.session.user}).toArray(function(err, results) {
     var chart = {};
-    chart.name = req.body.name;
+    chart.name = req.body.name.replace(/(<([^>]+)>)/ig,"");
     chart.id = (results[0] && results[0].charts && results[0].charts.length) ? results[0].charts.length + 1 : 1;
     chart.series = [];
     charts = (results[0] && results[0].charts && results[0].charts.length) ? results[0].charts : [];
