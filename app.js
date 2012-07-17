@@ -6,7 +6,8 @@
 var express = require('express')
   , routes = require('./routes')
   , port = process.env.PORT || 3000
-  , dbm = require('./node_modules/bdc_db_mgr/dbm');
+  , dbm = require('./node_modules/bdc_db_mgr/dbm')
+  , _ = require('underscore');
 
 var app = module.exports = express.createServer();
 
@@ -48,6 +49,21 @@ app.get('/charts', authenticate, function(req, res, next) {
   dbm.collection.find({email: req.session.user}).toArray(function(err, results) {
     req.charts = (results[0] && results[0].charts && results[0].charts.length) ? results[0].charts : [{name: 'No charts yet, add one now.'}];
     routes.charts(req, res);
+  });
+});
+
+app.post('/chart/new', authenticate, function(req, res, next) {
+  dbm.collection.find({email: req.session.user}).toArray(function(err, results) {
+    var chart = {};
+    chart.name = req.body.name;
+    chart.id = (results[0] && results[0].charts && results[0].charts.length) ? results[0].charts.length + 1 : 1;
+    chart.series = [];
+    charts = (results[0] && results[0].charts && results[0].charts.length) ? results[0].charts : [];
+    charts.push(chart);
+    results[0].charts = charts;
+    collection.save(results[0], function(err, docs) {
+      res.end(JSON.stringify(_.last(docs[0].charts)));
+    });
   });
 });
 
